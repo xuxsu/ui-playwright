@@ -7,8 +7,8 @@
     "@playwright/test": "^1.31.2"
   },
   "scripts": {
+    "headless": "npx playwright",
     "headed": "npx playwright test --workers=1  --headed",
-    "headless": "npx playwright test",
     "debug": "npx playwright test --workers=1 --headed --debug",
     "list": "npx playwright test --list",
     "update-local-snapshots": "npx playwright test --update-snapshots --workers=1 --grep @snapshots",
@@ -16,8 +16,7 @@
     "run-headless-CI": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.25.1-jammy /bin/bash -c 'npm install && npx playwright install && npm run headless && exit'",
     "allure-generate-html": "npx allure generate test-results/allure -o test-results/allure/html/",
     "open-allure": "npx allure serve allure-results",
-    "open-html": "npx playwright show-report",
-    "clean-project": "rm -rf test-results test_results.xml out prelogin-sessions/*.json allure-results/ allure-report/ playwright-report/"
+    "open-html": "npx playwright show-report"
   },
   "repository": {
     "type": "git",
