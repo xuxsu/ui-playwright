@@ -7,7 +7,7 @@
     "@playwright/test": "^1.31.2"
   },
   "scripts": {
-    "headless": "npx playwright",
+    "headless": "npx playwright test",
     "headed": "npx playwright test --workers=1  --headed",
     "debug": "npx playwright test --workers=1 --headed --debug",
     "list": "npx playwright test --list",

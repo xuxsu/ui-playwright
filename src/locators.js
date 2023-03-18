@@ -12,7 +12,6 @@ export const locators = {
   widgetCloud: `[id="asteroid-cloud"]`,
   widgetTV: `[id="asteroid-tv"]`,
 
-  footerMenu: `[class="footer gab__cfcd-2ypv5l"]`,
   footerMoreBtn: `.footer__more`,
   footerDropdown: `.dropdown-list`,
   footerHelpBtn: `[href="//help.mail.ru/"]`,

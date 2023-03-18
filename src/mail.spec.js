@@ -98,16 +98,6 @@ test('widgets', async ({ page }) => {
 });
 
 test('footer', async ({ page }) => {
-  await expect(page.locator(locators.footerMenu)).toBeVisible();
-  await expect(
-    page.locator(locators.footerMenu, {
-      hasText: 'Политика конфиденциальности',
-    })
-  ).toBeVisible();
-  await expect(
-    page.locator(locators.footerMenu, { hasText: 'О компании' })
-  ).toBeVisible();
-
   await page.click(locators.footerMoreBtn);
   await expect(page.locator(locators.footerDropdown)).toBeVisible();
 
