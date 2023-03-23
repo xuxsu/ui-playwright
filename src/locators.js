@@ -18,6 +18,20 @@ export const locators = {
 
   helpPageInput: `input[placeholder="Напишите вопрос или проблему"]`,
 
-  searchBtn: `.search-arrow__button`,
-  searchResult: `[id="search-result"]`,
+  newsMenu: `[data-testid="news-tabs"]`,
+  newsMoreBtn: `[data-testid="news-more"]`,
+  newsTick: `.tick`,
+  newsContent: `[data-testid="news-content"]`,
+
+  weatherWidget: `[data-testid="weather"]`,
+  weatherCity: `[data-testid="weather-city"]`,
+  weatherTemp: `[data-testid="weather-temp"]`,
+  weatherDesc: `[data-testid="weather-desc"]`,
+
+  ratesWidget: `[data-testid="rates"]`,
+
+  horoWidget: `[data-testid="horo-item"]`,
+
+  createEmailForm: `[data-test-id="signup-first-step"]`,
+  createEmailPhoneInput: `[data-test-id="phone-number"]`,
 };

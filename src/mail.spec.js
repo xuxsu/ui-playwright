@@ -105,3 +105,63 @@ test('footer', async ({ page }) => {
   await expect(page).toHaveURL('https://help.mail.ru/');
   await expect(page.locator(locators.helpPageInput)).toBeVisible();
 });
+
+test('news menu', async ({ page }) => {
+  await expect(page.locator(locators.newsMenu)).toBeVisible();
+
+  await expect(
+    page.locator(locators.newsMenu, { hasText: 'Новости' })
+  ).toBeVisible();
+  await expect(
+    page.locator(locators.newsMenu, { hasText: 'Санкт-Петербург' })
+  ).toBeVisible();
+  await expect(
+    page.locator(locators.newsMenu, { hasText: 'Спорт' })
+  ).toBeVisible();
+
+  await page.click(locators.newsMoreBtn);
+  await page.getByRole('link', { name: 'Питомцы' }).click();
+  await page.click(locators.newsMoreBtn);
+  await expect(page.locator(locators.newsTick)).toBeVisible();
+  await expect(
+    page.locator(locators.newsContent, { hasText: 'собак' })
+  ).toBeVisible();
+});
+
+test('weather', async ({ page }) => {
+  await expect(page.locator(locators.weatherWidget)).toBeVisible();
+  await expect(page.locator(locators.weatherCity)).toBeVisible();
+  await expect(page.locator(locators.weatherTemp)).toBeVisible();
+  await expect(
+    page.locator(locators.weatherDesc, { hasText: 'Влажность' })
+  ).toBeVisible();
+});
+
+test('rates', async ({ page }) => {
+  await expect(page.locator(locators.ratesWidget)).toBeVisible();
+
+  await expect(page.locator(locators.ratesWidget)).toHaveJSProperty(
+    'href="https://news.mail.ru/currency/src/MOEX/charcode/USD/"'
+  );
+  await expect(page.locator(locators.ratesWidget)).toHaveJSProperty(/dollar/g);
+
+  await expect(page.locator(locators.ratesWidget)).toHaveJSProperty(
+    'href="https://news.mail.ru/currency/src/MOEX/charcode/EUR/"'
+  );
+  await expect(page.locator(locators.ratesWidget)).toHaveJSProperty(/euro/g);
+});
+
+test('horoscope', async ({ page }) => {
+  await expect(page.locator(locators.horoWidget)).toBeVisible();
+  await expect(page.locator(locators.horoWidget)).toHaveClass(/horoscope/);
+});
+
+test('registration new email', async ({ page }) => {
+  await page.getByRole('link', { name: 'Регистрация' }).click();
+
+  await expect(page).toHaveURL(/signup/);
+  await expect(page.locator(locators.createEmailForm)).toHaveScreenshot(
+    `create-email-form.png`,
+    { mask: [page.locator(locators.createEmailPhoneInput)] }
+  );
+});
