@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('https://mail.ru');
 });
 
-test('grid menu', async ({ page }) => {
+test.only('grid menu', async ({ page }) => {
   await expect(page.locator(locators.gridMenu)).toBeVisible();
 
   await expect(
