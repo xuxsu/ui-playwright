@@ -6,8 +6,9 @@ on:
     branches: [ main, master ]
 
   workflow_dispatch:
-   env:
-    env_var: ${{ vars.ENV_CONTEXT_VAR }}
+    inputs:
+      logLevel:
+        description: 'workflow_dispatch'
 
 jobs:
   build:
@@ -40,12 +41,6 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-
-    - name: Deploy 
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: playwright-report/
-        token: ${{ secrets.TOKEN}}
 
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
