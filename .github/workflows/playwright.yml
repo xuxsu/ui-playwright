@@ -1,58 +1,55 @@
 name: Playwright Tests
-
 on:
   workflow_dispatch:
-  release:
-    types: ["prereleased"]
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
 
-    - name: Install deps
-      run: npm ci
+      - name: Install deps
+        run: npm ci
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-    - name: Run Playwright tests
-      run: npx playwright test --workers=2
-      continue-on-error: true
+      - name: Run Playwright tests
+        run: npx playwright test --workers=4
+        continue-on-error: true
 
-    - uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
-    - name: Deploy 
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: playwright-report/
-        token: ${{ secrets.TOKEN}}
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: playwright-report/
+          token: ${{ secrets.TOKEN}}
 
-    - name: send telegram message on push
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} created commit:
-          Commit message: ${{ github.event.comment }}
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
 
-          Repository: ${{ github.repository }}
+            Repository: ${{ github.repository }}
 
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
