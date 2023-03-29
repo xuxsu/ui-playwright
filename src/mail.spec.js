@@ -106,7 +106,7 @@ test('footer', async ({ page }) => {
   await expect(page.locator(locators.helpPageInput)).toBeVisible();
 });
 
-test.only('news menu', async ({ page }) => {
+test('news menu', async ({ page }) => {
   await expect(page.locator(locators.newsMenu)).toBeVisible();
 
   await expect(
