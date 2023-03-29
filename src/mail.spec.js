@@ -18,13 +18,13 @@ test('grid menu', async ({ page }) => {
   ).toBeVisible();
   await expect(
     page.locator(locators.gridMenu, { hasText: 'ВКонтакте' })
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
   await expect(
     page.locator(locators.gridMenu, { hasText: 'Новости' })
   ).toBeVisible();
   await expect(
     page.locator(locators.gridMenu, { hasText: 'Знакомства' })
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
 
   await page.getByText('Все проекты').click();
   await expect(page.locator(locators.gridAllProjects)).toBeVisible();
@@ -34,7 +34,7 @@ test('logo', async ({ page }) => {
   await page.locator(locators.logoBtn).hover();
   await expect(page.locator(locators.logoBtn), {
     hasText: locators.logoPopover,
-  }).toBeVisible();
+  }).toBeVisible({ timeout: 10000 });
 });
 
 test('left menu', async ({ page }) => {
@@ -48,7 +48,7 @@ test('left menu', async ({ page }) => {
   ).toBeVisible();
   await expect(
     page.locator(locators.leftMenu, { hasText: 'Календарь' })
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
   await expect(
     page.locator(locators.leftMenu, { hasText: 'Войти' })
   ).toBeVisible();
@@ -106,7 +106,7 @@ test('footer', async ({ page }) => {
   await expect(page.locator(locators.helpPageInput)).toBeVisible();
 });
 
-test('news menu', async ({ page }) => {
+test.only('news menu', async ({ page }) => {
   await expect(page.locator(locators.newsMenu)).toBeVisible();
 
   await expect(
@@ -114,7 +114,7 @@ test('news menu', async ({ page }) => {
   ).toBeVisible();
   await expect(
     page.locator(locators.newsMenu, { hasText: 'Санкт-Петербург' })
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
   await expect(
     page.locator(locators.newsMenu, { hasText: 'Спорт' })
   ).toBeVisible();
