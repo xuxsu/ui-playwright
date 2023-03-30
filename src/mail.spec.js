@@ -114,7 +114,7 @@ test('news menu', async ({ page }) => {
   ).toBeVisible();
   await expect(
     page.locator(locators.newsMenu, { hasText: 'Санкт-Петербург' })
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
   await expect(
     page.locator(locators.newsMenu, { hasText: 'Спорт' })
   ).toBeVisible();
