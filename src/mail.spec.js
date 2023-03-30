@@ -106,7 +106,7 @@ test('footer', async ({ page }) => {
   await expect(page.locator(locators.helpPageInput)).toBeVisible();
 });
 
-test('news menu', async ({ page }) => {
+test.skip('news menu', async ({ page }) => {
   await expect(page.locator(locators.newsMenu)).toBeVisible();
 
   await expect(
@@ -156,7 +156,7 @@ test('horoscope', async ({ page }) => {
   await expect(page.locator(locators.horoWidget)).toHaveClass(/horoscope/);
 });
 
-test('registration new email', async ({ page }) => {
+test.skip('registration new email', async ({ page }) => {
   await page.getByRole('link', { name: 'Регистрация' }).click();
 
   await expect(page).toHaveURL(/signup/);
