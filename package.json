@@ -20,15 +20,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alinammmmmmmmm/project.git"
+    "url": "git+https://github.com/xuxsu/project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alinammmmmmmmm/project/issues"
+    "url": "https://github.com/xuxsu/project/issues"
   },
-  "homepage": "https://github.com/alinammmmmmmmm/project#readme",
+  "homepage": "https://github.com/xuxsu/project#readme",
   "dependencies": {
     "playwright": "^1.25.1"
   }
