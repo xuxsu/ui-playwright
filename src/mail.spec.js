@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { locators } from './locators';
+import { MailPage } from './mail.page';
 
 test.describe.configure({ mode: 'parallel' });
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://mail.ru');
+  const mailPage = new MailPage(page);
+  await mailPage.pageOpen();
 });
 
 test('grid menu', async ({ page }) => {
@@ -28,13 +30,6 @@ test('grid menu', async ({ page }) => {
 
   await page.getByText('Все проекты').click();
   await expect(page.locator(locators.gridAllProjects)).toBeVisible();
-});
-
-test('logo', async ({ page }) => {
-  await page.locator(locators.logoBtn).hover();
-  await expect(page.locator(locators.logoBtn), {
-    hasText: locators.logoPopover,
-  }).toBeVisible();
 });
 
 test('left menu', async ({ page }) => {
@@ -97,15 +92,6 @@ test('widgets', async ({ page }) => {
   );
 });
 
-test('footer', async ({ page }) => {
-  await page.click(locators.footerMoreBtn);
-  await expect(page.locator(locators.footerDropdown)).toBeVisible();
-
-  await page.click(locators.footerHelpBtn);
-  await expect(page).toHaveURL('https://help.mail.ru/');
-  await expect(page.locator(locators.helpPageInput)).toBeVisible();
-});
-
 test('news menu', async ({ page }) => {
   await expect(page.locator(locators.newsMenu)).toBeVisible();
 
@@ -145,10 +131,55 @@ test('horoscope', async ({ page }) => {
   await expect(page.locator(locators.horoWidget)).toHaveClass(/horoscope/);
 });
 
-test('registration new email', async ({ page }) => {
-  await page.getByRole('link', { name: 'Регистрация' }).click();
+test.describe('Тесты с паттерном Page Object', () => {
+  test('logoMailru', async ({ page }) => {
+    const mailPage = new MailPage(page);
 
-  await expect(page).toHaveURL(/signup/);
-  await expect(page.locator(locators.createEmailForm, { hasText: 'Создание почтового ящика' })
-  ).toBeVisible();
+    await mailPage.openPopover(
+      locators.logoMailBtn,
+      locators.logoMailPopoverText
+    );
+  });
+
+  test('footer', async ({ page }) => {
+    const mailPage = new MailPage(page);
+
+    await mailPage.openFooterMenu();
+    await expect(page.locator(locators.footerDropdown)).toBeVisible();
+
+    await mailPage.openHelpPage();
+    await expect(page).toHaveURL('https://help.mail.ru/');
+    await expect(page.locator(locators.helpPageInput)).toBeVisible();
+  });
+
+  test('registration new email', async ({ page }) => {
+    const mailPage = new MailPage(page);
+
+    await mailPage.openRegistrationPage();
+    await expect(page).toHaveURL(/signup/);
+    await expect(
+      page.locator(locators.createEmailForm, {
+        hasText: 'Создание почтового ящика',
+      })
+    ).toBeVisible();
+  });
+
+  test('company info', async ({ page }) => {
+    const mailPage = new MailPage(page);
+
+    await mailPage.InfoCompany();
+    await expect(page).toHaveURL(/vk.company/);
+
+    await mailPage.SearchInfo();
+    await expect(page).toHaveURL(/search=racoon/);
+  });
+
+  test('privacy', async ({ page }) => {
+    const mailPage = new MailPage(page);
+
+    await mailPage.OpenPrivacyPage();
+    await expect(page).toHaveURL(
+      'https://help.mail.ru/legal/terms/common/privacy'
+    );
+  });
 });

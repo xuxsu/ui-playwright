@@ -1,10 +1,9 @@
 export const locators = {
-  registrationBtn: `[data-click-counter="75068995"]`,
   gridMenu: `[data-testid="grid-header"]`,
   gridAllProjects: `.ph-menu`,
 
-  logoBtn: `[data-testid="logo-item"]`,
-  logoPopover: `[title="Mail.ru: почта, поиск в интернете, новости, игры"]`,
+  logoMailBtn: `[data-testid="logo-item"]`,
+  logoMailPopoverText: `[title="Mail.ru: почта, поиск в интернете, новости, игры"]`,
 
   leftMenu: `[data-testid="mailbox-body"]`,
   leftMenuMoreServicesBtn: `[data-testid="logged-out-more-services"]`,
@@ -30,4 +29,10 @@ export const locators = {
   horoWidget: `[data-testid="horo-item"]`,
 
   createEmailForm: `[data-test-id="signup-first-step"]`,
+
+  infoBtn: `text=О компании`,
+
+  searchBtn:`[class="header-icon-search anim"]`,
+
+  privacyBtn: `text=Политика конфиденциальности`,
 };
