@@ -45,12 +45,12 @@ export class MailPage extends BasePage {
 
   /**
    * Функция поиска
+   * @param request - текст поискового запроса
    */
-  async SearchInfo() {
-    // await this.page.getByRole('link', { name: 'Поиск' }).click();
-    await this.page.click(locators.searchBtn)
-    await this.page.getByPlaceholder('Поиск').fill('racoon');
-    await this.page.getByPlaceholder('Поиск').press('Enter');
+  async SearchInfo(request) {
+    await this.page.click(locators.searchBtn);
+    await this.page.getByPlaceholder(/Поиск|Search/g).fill(request);
+    await this.page.getByPlaceholder(/Поиск|Search/g).press('Enter');
   }
 
   /**

@@ -170,7 +170,7 @@ test.describe('Тесты с паттерном Page Object', () => {
     await mailPage.InfoCompany();
     await expect(page).toHaveURL(/vk.company/);
 
-    await mailPage.SearchInfo();
+    await mailPage.SearchInfo('racoon');
     await expect(page).toHaveURL(/search=racoon/);
   });
 
