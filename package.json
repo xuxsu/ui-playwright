@@ -1,34 +1,32 @@
 {
   "name": "project",
-  "description": "Playwrigth tests",
+  "description": "Playwright Tests for mail.ru",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
     "@playwright/test": "^1.31.2"
   },
   "scripts": {
-    "headless": "npx playwright test",
-    "headed": "npx playwright test --workers=1  --headed",
-    "debug": "npx playwright test --workers=1 --headed --debug",
+    "headless": "npx playwright test --workers=10",
+    "headed": "npx playwright test --workers=10  --headed",
+    "debug": "npx playwright test --workers=10 --headed --debug",
     "list": "npx playwright test --list",
     "update-local-snapshots": "npx playwright test --update-snapshots --workers=1 --grep @snapshots",
     "update-CI-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.25.1-jammy /bin/bash -c 'npm install && npx playwright install && npm run update-local-snapshots && exit'",
     "run-headless-CI": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.25.1-jammy /bin/bash -c 'npm install && npx playwright install && npm run headless && exit'",
-    "allure-generate-html": "npx allure generate test-results/allure -o test-results/allure/html/",
-    "open-allure": "npx allure serve allure-results",
     "open-html": "npx playwright show-report"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alinammmmmmmmm/project.git"
+    "url": "git+https://github.com/xuxsu/project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alinammmmmmmmm/project/issues"
+    "url": "https://github.com/xuxsu/project/issues"
   },
-  "homepage": "https://github.com/alinammmmmmmmm/project#readme",
+  "homepage": "https://github.com/xuxsu/project#readme",
   "dependencies": {
     "playwright": "^1.25.1"
   }
