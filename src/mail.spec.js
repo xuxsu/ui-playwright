@@ -131,6 +131,15 @@ test('horoscope', async ({ page }) => {
   await expect(page.locator(locators.horoWidget)).toHaveClass(/horoscope/);
 });
 
+test('failed test horoscope', async ({ page }) => {
+  await expect(page.locator(locators.horoWidget)).not.toBeVisible();
+  await expect(page.locator(locators.horoWidget)).toHaveClass(/horoscope/);
+});
+
+test.skip('skip test horoscope', async ({ page }) => {
+  await expect(page.locator(locators.horoWidget)).toBeVisible();
+});
+
 test.describe('Тесты с паттерном Page Object', () => {
   test('logoMailru', async ({ page }) => {
     const mailPage = new MailPage(page);
