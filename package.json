@@ -1,6 +1,6 @@
 {
   "name": "project",
-  "description": "Playwrigth tests",
+  "description": "Playwright Tests for mail.ru",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
