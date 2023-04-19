@@ -22,13 +22,20 @@ Scenario('reset password', ({ I, open, see }) => {
 });
 
 Scenario('welcome form', ({ I, open }) => {
-    I.amOnPage('https://github.com');
+  I.amOnPage('https://github.com');
   open.element('Sign up');
-   I.see('Welcome to GitHub!', '.js-signup-typed-welcome');
+  I.see('Welcome to GitHub!', '.js-signup-typed-welcome');
 });
 
-// Scenario('github',  ({ I, open,see }) => {
-// });
+Scenario('free plan', ({ I, open }) => {
+  I.amOnPage('https://github.com');
+  open.element('[data-test-selector="start-trial-button"]');
+  I.see('Pick your trial plan', 'h1');
+});
 
-// Scenario('github',  ({ I, open,see }) => {
-// });
+Scenario('search', ({ I, open, see }) => {
+  I.amOnPage('https://github.com');
+  I.fillField('.js-site-search-form', 'actions');
+  I.pressKey('Enter');
+  I.saveScreenshot('screen.png');
+});
