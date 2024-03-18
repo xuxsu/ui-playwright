@@ -1,5 +1,5 @@
 {
-  "name": "project",
+  "name": "ui-playwright",
   "description": "Playwright Tests for mail.ru",
   "version": "1.0.0",
   "main": "index.js",
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuxsu/project.git"
+    "url": "git+https://github.com/xuxsu/ui-playwright.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xuxsu/project/issues"
+    "url": "https://github.com/xuxsu/ui-playwright/issues"
   },
-  "homepage": "https://github.com/xuxsu/project#readme",
+  "homepage": "https://github.com/xuxsu/ui-playwright#readme",
   "dependencies": {
     "playwright": "^1.25.1"
   }

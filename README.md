@@ -1,7 +1,7 @@
 # "Организация UI-тестирования сайта mail.ru с помощью фреймворка playwright" 
 
 ### Как начать работу и запустить тесты:
-- скачайте локально проект по HTTPS ссылке https://github.com/xuxsu/project.git или SSH ссылке git@github.com:xuxsu/project.git
+- скачайте локально проект по HTTPS ссылке https://github.com/xuxsu/ui-playwright.git или SSH ссылке git@github.com:xuxsu/ui-playwright.git
 - установите нужные зависимости c помощью консольной команды *npm install* и *npm i*
 - проверьте установку или установите модули *npm,npx,node*
 - установите нужные зависимости c помощью консольной команды *npm install* и *npm i*
@@ -13,7 +13,7 @@
 - [Playwright-report](https://playwright.dev/docs/test-reporters) для отчета с прогоном тестов с списом шагов,скриншотами и трейсом для диагностики упавших тестов
 - [Github](https://github.com/) система контроля версий для CI 
 - [Github-Actions](https://docs.github.com/ru/actions) для уведомлений об изменении git проекта в telegram
-- [Github-pages](https://docs.github.com/ru/pages) для публикации репорта на сайте https://xuxsu.github.io/project/
+- [Github-pages](https://docs.github.com/ru/pages) для публикации репорта на сайте https://xuxsu.github.io/ui-playwright/
 - [Docker](https://docs.docker.com/engine/reference/builder/) для сборки билда с нужным окружением и прогона тестов в CI
 - сайт для тестирования mail.ru 
 
